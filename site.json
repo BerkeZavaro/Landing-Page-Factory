@@ -1,0 +1,14 @@
+{
+  "brand": {
+    "name": "Approved Science",
+    "logo_text": "Approved Science",
+    "primary_color": "#0B5FFF"
+  },
+  "tracking": {
+    "gtm_id": "GTM-XXXXXXX"
+  },
+  "legal": {
+    "disclaimer": "These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.",
+    "consult": "Consult your healthcare professional before starting any new supplement, especially if you have a medical condition, take medications, or are pregnant or nursing."
+  }
+}

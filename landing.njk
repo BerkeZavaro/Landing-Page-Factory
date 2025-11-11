@@ -1,0 +1,80 @@
+
+---
+layout: base.njk
+title: "{{ title }}"
+description: "{{ description }}"
+noindex: {{ noindex | default(false) }}
+angle_badge: "{{ angle_badge | default('Research Brief') }}"
+---
+
+<section class="grid">
+  <div>
+    <h1>{{ h1 }}</h1>
+    <p class="muted">{{ subtitle }}</p>
+    <div style="margin:18px 0">
+      <a class="btn" href="{{ cta.url }}{{ cta.utm | default('') }}" rel="nofollow sponsored">Buy {{ product.name }}</a>
+    </div>
+    {% if highlights and highlights.length %}
+    <div class="card">
+      <h3>Key points</h3>
+      <ul>
+        {% for item in highlights %}<li>{{ item }}</li>{% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+    <div class="note">
+      {{ note | safe }}
+    </div>
+  </div>
+  <div>
+    <img src="{{ hero.src }}" alt="{{ hero.alt }}">
+    {% if proof_points and proof_points.length %}
+    <div class="card" style="margin-top:16px">
+      <h3>Evidence snapshot</h3>
+      <ul>
+        {% for p in proof_points %}
+          <li><strong>{{ p.claim }}</strong>{% if p.source %} — <a href="{{ p.source }}" target="_blank" rel="noopener">source</a>{% endif %}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+{% if sections and sections.length %}
+  {% for s in sections %}
+    <section style="margin-top:34px">
+      <div class="grid">
+        <div class="card">
+          <h2>{{ s.title }}</h2>
+          <div class="muted">{{ s.kicker }}</div>
+          <div>{{ s.body | safe }}</div>
+        </div>
+        <div class="card">
+          <h3>How to use</h3>
+          <ul>
+            {% for tip in product.dosage %}<li>{{ tip }}</li>{% endfor %}
+          </ul>
+          {% if product.safety and product.safety.length %}
+          <h3>Safety</h3>
+          <ul>
+            {% for tip in product.safety %}<li>{{ tip }}</li>{% endfor %}
+          </ul>
+          {% endif %}
+        </div>
+      </div>
+    </section>
+  {% endfor %}
+{% endif %}
+
+<section style="margin-top:34px">
+  <div class="card">
+    <h2>Why {{ product.name }} ({{ product.form }})</h2>
+    <ul>
+      {% for f in product.features %}<li>{{ f }}</li>{% endfor %}
+    </ul>
+    <div style="margin-top:12px">
+      <a class="btn" href="{{ cta.url }}{{ cta.utm | default('') }}" rel="nofollow sponsored">Shop now</a>
+    </div>
+  </div>
+</section>

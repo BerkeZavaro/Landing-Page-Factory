@@ -1,0 +1,56 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{{ title }}</title>
+  {% if description %}<meta name="description" content="{{ description | safe }}">{% endif %}
+  {% if noindex %}<meta name="robots" content="noindex,nofollow">{% endif %}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --brand: {{ site.brand.primary_color }}; }
+    *{box-sizing:border-box} body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;margin:0;color:#0a0a0a}
+    header{padding:18px 20px;border-bottom:1px solid #eee;display:flex;gap:10px;align-items:center}
+    header .logo {font-weight:700;color:var(--brand)}
+    .container{max-width:1000px;margin:0 auto;padding:24px}
+    .btn{display:inline-block;padding:12px 18px;border-radius:10px;background:var(--brand);color:#fff;text-decoration:none;font-weight:700}
+    .muted{color:#666}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+    .card{border:1px solid #eee;border-radius:14px;padding:18px;box-shadow:0 1px 2px rgba(0,0,0,0.03)}
+    footer{border-top:1px solid #eee;padding:24px 20px;margin-top:40px;font-size:13px;color:#444}
+    ul{padding-left:18px}
+    .badge{display:inline-block;background:#eef4ff;color:#2549ff;padding:4px 8px;border-radius:999px;font-weight:600;font-size:12px}
+    .note{background:#fafafa;border:1px dashed #ddd;border-radius:10px;padding:12px}
+    img{max-width:100%;border-radius:12px}
+  </style>
+  {% if site.tracking.gtm_id %}
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','{{ site.tracking.gtm_id }}');</script>
+  <!-- End Google Tag Manager -->
+  {% endif %}
+</head>
+<body>
+  {% if site.tracking.gtm_id %}
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ site.tracking.gtm_id }}"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  {% endif %}
+  <header>
+    <div class="logo">{{ site.brand.logo_text }}</div>
+    {% if angle_badge %}<span class="badge">{{ angle_badge }}</span>{% endif %}
+  </header>
+  <main class="container">
+    {{ content | safe }}
+  </main>
+  <footer>
+    <div class="muted">{{ site.legal.disclaimer }}</div>
+    <div class="muted" style="margin-top:8px">{{ site.legal.consult }}</div>
+  </footer>
+</body>
+</html>
